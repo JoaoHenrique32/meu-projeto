@@ -1,8 +1,8 @@
 FROM python:3.9-slim
 
-WORKDIR /app
+WORKDIR /MEU-PROJETO
 
-COPY ./app /app
+COPY . .
 
 RUN pip install fastapi uvicorn httpx
 
