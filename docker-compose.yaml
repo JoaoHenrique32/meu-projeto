@@ -1,22 +1,16 @@
-version: '3.8'
+version: "3.9"
 services:
   backend:
     build:
       context: ./backend
     ports:
       - "8000:8000"
-    networks:
-      - app-network
-
+    environment:
+      - API_KEY=e610b76919aa41d29c5215108242611
+    deploy:
+      replicas: 1
   frontend:
-    image: nginx:latest
-    volumes:
-      - ./frontend:/usr/share/nginx/html
+    build:
+      context: ./frontend
     ports:
-      - "8080:80"
-    networks:
-      - app-network
-
-networks:
-  app-network:
-
+      - "3000:80"

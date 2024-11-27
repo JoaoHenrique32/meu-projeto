@@ -1,35 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clima</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        #result { margin-top: 20px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Consulta de Clima</h1>
-    <input type="text" id="city" placeholder="Digite a cidade">
-    <button onclick="getWeather()">Consultar</button>
+  <div id="app">
+    <h1>Weather Application</h1>
+    <button id="currentWeatherBtn">Get Current Weather</button>
+    <button id="forecastBtn">Get Weather Forecast</button>
     <div id="result"></div>
-
-    <script>
-        async function getWeather() {
-            const city = document.getElementById("city").value;
-            try {
-                const response = await fetch(`http://localhost:8000/weather?city=${city}`);
-                const data = await response.json();
-                document.getElementById("result").innerHTML = `
-                    <h2>${data.name}</h2>
-                    <p>Temperatura: ${data.main.temp}°C</p>
-                    <p>Condição: ${data.weather[0].description}</p>
-                `;
-            } catch (error) {
-                document.getElementById("result").innerHTML = `<p style="color:red;">Erro ao buscar os dados.</p>`;
-            }
-        }
-    </script>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
